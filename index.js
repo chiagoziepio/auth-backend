@@ -1,11 +1,14 @@
 const express = require("express")
 const dotenv = require("dotenv")
 const mongoose = require("mongoose")
+const cors = require("cors")
 
 
-//initialization
+//initialization and middlewares
 const app = express()
 dotenv.config()
+app.use(express.json())
+app.use(cors())
 
 const PORT = process.env.PORT  || 5050
 
