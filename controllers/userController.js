@@ -9,7 +9,7 @@ const handleGtAllUser = (async(req, res)=>{
    const {username,email,password} = req.body
    console.log(req.body)
    if(!username || !email || !password) return res.status(400).json({msg: "all field should be filled"})
-   const alreadyExistedUser = userModel.findOne({username})
+   const alreadyExistedUser = await userModel.findOne({username})
    if(alreadyExistedUser) return res.status(400).json({msg:"username or email already existed"})
       try{
 
