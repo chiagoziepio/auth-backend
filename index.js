@@ -44,7 +44,8 @@ app.use(passport.initialize());
 app.use(passport.session())
 //routes
 app.use("/api/user", require("./routes/api/user"));
-app.use("/api/user/login", require("./routes/api/login"))
+app.use("/api/user/login", require("./routes/api/login"));
+app.use("/api/user/resetpassword", require("./routes/api/forgotPwd"))
 
 //start server
 app.listen(PORT,()=>{
