@@ -4,7 +4,8 @@ const mongoose = require("mongoose")
 const cors = require("cors")
 const passport = require("passport")
 const cookieParser = require("cookie-parser")
-const session = require("express-session")
+const session = require("express-session");
+const { logEvent, errorLogger} = require("./middleware/logActions")
 
 //initialization and middlewares
 const app = express()
@@ -16,6 +17,8 @@ app.use(cors({
     ],
     credentials: true
 }))
+
+app.use(logEvent);
 
 
 const PORT = process.env.PORT  || 5050
@@ -42,11 +45,13 @@ app.use(session({
 })) 
 app.use(passport.initialize());
 app.use(passport.session())
+
 //routes
 app.use("/api/user", require("./routes/api/user"));
 app.use("/api/user/login", require("./routes/api/login"));
 app.use("/api/user/forgotpassword", require("./routes/api/forgotPwd"))
 app.use("/api/user/resetpassword", require("./routes/api/resetPwd"))
+app.use("/api/user/verify", require("./routes/api/verify"))
 //start server
 app.listen(PORT,()=>{
     console.log(`app running on port ${PORT}`);

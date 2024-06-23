@@ -26,9 +26,9 @@ const passportUse = passport.use(
         console.log(password);
         try{
             const findUser = await userModel.findOne({username});
-            if(!findUser) throw new Error("user not foundss")
+            if(!findUser) throw new Error("user not found")
             const checkedPwd = await bcrypt.compare(password, findUser.password);
-            if(!checkedPwd) throw new Error("username or password wrong");
+            if(!checkedPwd) throw new Error("password wrong");
             done(null, findUser)
             
         }catch(error){
