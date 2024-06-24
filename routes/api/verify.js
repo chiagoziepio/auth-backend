@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router()
 const jwt = require("jsonwebtoken")
 const userModel = require("../../model/schema/usersdb")
+require("dotenv").config()
 
 router.get("/", async(req,res)=>{
     console.log("from api/auth/status i.e the passport status ");
