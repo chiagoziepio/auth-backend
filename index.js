@@ -52,6 +52,7 @@ app.use("/api/user/login", require("./routes/api/login"));
 app.use("/api/user/forgotpassword", require("./routes/api/forgotPwd"))
 app.use("/api/user/resetpassword", require("./routes/api/resetPwd"))
 app.use("/api/user/verify", require("./routes/api/verify"))
+app.use("/api/user/logout", require("./routes/api/logout"))
 //start server
 app.listen(PORT,()=>{
     console.log(`app running on port ${PORT}`);
